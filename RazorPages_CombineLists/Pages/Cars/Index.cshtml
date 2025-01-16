@@ -1,0 +1,23 @@
+﻿@page
+@model RazorPages_CombineLists.Pages.Cars.IndexModel
+@{
+}
+
+<h1>Index</h1>
+<h3>Cars</h3>
+
+<table class="table">
+    <thead>
+    <th>Id</th>
+    <th>Brand</th>
+    </thead>
+    <tbody>
+        @foreach (Models.Car car in Model.dbinjection.getAllCars())
+        {
+            <tr>
+                <td>@car.Id</td>
+                <td>@car.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
