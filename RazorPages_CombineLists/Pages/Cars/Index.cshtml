@@ -6,17 +6,38 @@
 <h1>Index</h1>
 <h3>Cars</h3>
 
+<p><a asp-page="Create">Create new</a></p>
+
 <table class="table">
     <thead>
     <th>Id</th>
+    <th>Owner's Name</th>
     <th>Brand</th>
+    <th>Distance (KM)</th>
+    <th>Turbo</th>
     </thead>
     <tbody>
         @foreach (Models.Car car in Model.dbinjection.getAllCars())
         {
             <tr>
                 <td>@car.Id</td>
-                <td>@car.Name</td>
+                <td>@car.OwnerName</td>
+                <td>@car.Brand</td>
+
+                @if (car.Engine.Any())
+                {
+                    @foreach (var engine in car.Engine)
+                    {
+
+                        <td>@engine.DistanceKørtKm</td>
+                        <td>@engine.Turbo.Value</td>
+
+                    }
+                }
+                else
+                {
+                    <td>No engines available</td>
+                }
             </tr>
         }
     </tbody>

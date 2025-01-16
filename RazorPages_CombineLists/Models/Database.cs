@@ -4,19 +4,32 @@
     {
         List<Car> carList;
         int carId = 0;
-        string[] carNames = { "TOYOTA", "Ford", "Volkswagen", "AG", "BMW", "Honda", "Nissan", "Tesla", "Mercedes Benz", "General Motors", "Hyundai", "Porsche", "Chevrolet", "Ferrari", "Mazda", "BYD", "Lexus", "Audi", "SAIC Motor", "Stellantis", "Subaru", "Aston Martin", "Bentley", "Bugatti", "Kia" };
+        List<Engine> engineList;
+        int engineId = 0;
+        string[] carBrands = { "TOYOTA", "Ford", "Volkswagen", "AG", "BMW", "Honda", "Nissan", "Tesla", "Mercedes Benz", "General Motors", "Hyundai", "Porsche", "Chevrolet", "Ferrari", "Mazda", "BYD", "Lexus", "Audi", "SAIC Motor", "Stellantis", "Subaru", "Aston Martin", "Bentley", "Bugatti", "Kia" };
+        string[] carOwners = { "James", "Michael", "Robert", "John", "David", "William", "Richard", "Joseph", "Thomas", "Christopher", "Charles", "Daniel", "Matthew", "Anthony", "Mark", "Steven", "Andrew", "Paul", "Joshua", "Kenneth", "Kevin", "Brian", "Timothy", "Ronald", "George", "Jason", "Edward" };
         public Database()
         {
+            Random random = new Random();
             if (carList == null)
-            {
-                Random random = new Random();
+            {              
                 carList = new List<Car>();
+                engineList = new List<Engine>();
                 for (int i = 0; i < 10; i++)
                 {
                     Car car = new Car();
                     car.Id = carId++;
-                    car.Name = carNames[random.Next(carNames.Length)];
+                    car.Brand = carBrands[random.Next(carBrands.Length)];
+                    car.OwnerName = carOwners[random.Next(carOwners.Length)];
+                    
+                    Engine engine = new Engine();
+                    engine.Id = engineId++;
+                    engine.DistanceKørtKm = random.Next(500000);
+                    engine.Turbo = Convert.ToBoolean(random.Next(2));
+                    engineList.Add(engine);
+                    car.Engine.Add(engine);
                     carList.Add(car);
+                    
                 }
             }
         }
@@ -24,6 +37,17 @@
         public List<Car> getAllCars()
         {
             return carList;
+        }
+
+        public void createCar(Car car)
+        {
+            car.Id = carId++;
+            carList.Add(car);
+        }
+
+        public List<Engine> getAllEngines()
+        {
+            return engineList;
         }
     }
 }
