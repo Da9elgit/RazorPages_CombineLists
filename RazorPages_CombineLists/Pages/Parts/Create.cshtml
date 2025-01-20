@@ -1,0 +1,16 @@
+﻿@page
+@model RazorPages_CombineLists.Pages.Parts.CreateModel
+@{
+}
+
+<h1>Create</h1>
+<h3>New engine</h3>
+
+<form method="post">
+    <label for="selector">Input KM on engine:</label><br />
+    <input type="number" asp-for="myEngine.DistanceKørtKm" />
+    <input type="submit" value="Submit">
+</form>
+<div>
+    <a asp-page="index">Back to engine index</a>
+</div>

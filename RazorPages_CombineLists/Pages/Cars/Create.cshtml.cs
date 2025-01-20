@@ -11,11 +11,7 @@ namespace RazorPages_CombineLists.Pages.Cars
 
 
         [BindProperty]
-        public Car createdCar { get; set; }
-
-        [BindProperty]
-        public bool TurboUpgrade { get; set; }
-   
+        public Car createdCar { get; set; } = new Car();
 
         public CreateModel(IDatabase db)
         {
@@ -25,24 +21,10 @@ namespace RazorPages_CombineLists.Pages.Cars
         {
         }
 
-        public IActionResult OnPost()
+        public void OnPost()
         {
-            if (ModelState.IsValid)
-            {
-                if (TurboUpgrade)
-                {
-                    Engine newEngine = new Engine
-                    {
-                        Id = createdCar.Engine.Count + 1,
-                        DistanceKørtKm = 0,
-                        Turbo = true
-                    };
-                    createdCar.Engine.Add(newEngine);
-                }
-                dbinjection.createCar(createdCar);
-                return RedirectToPage("Index");
-            }
-            return Page();
+            dbinjection.createCar(createdCar, createdCar.Engine.Id);
+            RedirectToPage("Index");
         }
     }
 }

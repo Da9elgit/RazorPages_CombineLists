@@ -8,10 +8,10 @@
 
 <form method="post">
     <label for="ownerName">Car owner's name:'</label><br />
-    <input type="text" name="OwnerName" /><br />
+    <input type="text" asp-for="createdCar.OwnerName" /><br />
 
     <label for="lname">Select car brand:</label><br>
-    <select name="Brand">
+    <select asp-for="createdCar.Brand">
         @foreach (var brand in Model.carBrands)
         {
             <option value="@brand">@brand</option>
@@ -19,15 +19,13 @@
     </select><br><br>
 
     <label for="Engine">Choose an used engine:</label><br />
-    <select name="Engine">
-        @foreach(var engine in Model.dbinjection.getAllEngines())
+    <select asp-for="createdCar.Engine.Id">
+        @foreach(Models.Engine engine in Model.dbinjection.getAllEngines())
         {
-            <option value="@engine.DistanceKørtKm">@engine.DistanceKørtKm</option>            
+            <option value="@engine.Id">@engine.Id, @engine.DistanceKørtKm</option>            
         }
 
     </select><br /><br />
-    <label for="Turbo">Factory new</label><br />
-    <input type="checkbox" asp-for="TurboUpgrade" /><br><br>
 
     <input type="submit" value="Submit">
 </form>

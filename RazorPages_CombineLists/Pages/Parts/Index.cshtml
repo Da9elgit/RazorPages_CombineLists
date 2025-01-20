@@ -1,0 +1,26 @@
+﻿@page
+@model RazorPages_CombineLists.Pages.Parts.IndexModel
+@{
+}
+
+<h1>Index</h1>
+<h3>Engines</h3>
+
+<p><a asp-page="Create">Create new engine</a></p>
+
+<table class="table">
+    <thead>
+    <th>Id</th>
+    <th>Distance (KM)</th>
+    </thead>
+    <tbody>
+        @foreach (Models.Engine engine in Model.dbinjection.getAllEngines())
+        {
+            <tr>
+                <td>@engine.Id</td>
+                <td>@engine.DistanceKørtKm</td>                
+            </tr>
+        }
+        
+    </tbody>
+</table>

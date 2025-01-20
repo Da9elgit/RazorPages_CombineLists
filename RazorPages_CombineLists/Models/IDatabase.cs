@@ -3,8 +3,10 @@
     public interface IDatabase
     {
         public List<Car> getAllCars();
-        public void createCar(Car car);
+        public void createCar(Car car, int engineIndex);
+        public void addEngine(Engine engine);
 
-        public List<Engine> getAllEngines();
+        public List<Engine> getAllEngines();       
+
     }
 }

@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using RazorPages_CombineLists.Models;
 
-namespace RazorPages_CombineLists.Pages.Cars
+namespace RazorPages_CombineLists.Pages.Parts
 {
     public class IndexModel : PageModel
     {
@@ -13,11 +13,6 @@ namespace RazorPages_CombineLists.Pages.Cars
         }
         public void OnGet()
         {
-        }
-
-        public void OnPost()
-        {
-
         }
     }
 }
